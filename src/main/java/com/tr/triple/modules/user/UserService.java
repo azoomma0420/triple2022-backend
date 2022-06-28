@@ -31,15 +31,9 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public UserInfo getUser(String userName) {
+    public Object login(UserInfo login) {
+        String userName = login.getUserName();
         UserInfo user = userRepository.findByUserName(userName);
-        user.setPassword(null);
-        return user;
-    }
-
-    public Object login(TripleUser login) {
-        String userName = login.getUsername();
-        UserInfo user = getUser(userName);
         if (user == null) {
             return ErrorResponseDTO.builder()
                     .errorCode(UserError.INVALID_USERID.getCode())
@@ -51,7 +45,6 @@ public class UserService {
                     new UsernamePasswordAuthenticationToken(userName, login.getPassword()));
             SecurityContextHolder.getContext().setAuthentication(authenticate);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             if (e instanceof BadCredentialsException)
                 return ErrorResponseDTO.builder()
                         .errorCode(UserError.WRONG_PASSWORD.getCode())

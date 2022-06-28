@@ -24,7 +24,6 @@ public class JwtTokenFilter extends OncePerRequestFilter {
         String accessToken = jwtTokenProvider.resolveCookie(httpServletRequest);
         //String refreshToken = null;
         String userName = null;
-
         if (accessToken == null && authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             accessToken = authorizationHeader.substring(7);
         }
@@ -33,7 +32,6 @@ public class JwtTokenFilter extends OncePerRequestFilter {
             try {
                 userName = jwtTokenProvider.extractUsername(accessToken);
             } catch (Exception e) {
-                System.out.println("extractUsername" + e.getMessage());
                 SecurityContextHolder.clearContext();
                 jwtTokenProvider.clearCookie(httpServletRequest, httpServletResponse);
             }
@@ -43,12 +41,10 @@ public class JwtTokenFilter extends OncePerRequestFilter {
             if (jwtTokenProvider.validateToken(accessToken)) {
                 SecurityContextHolder.getContext().setAuthentication(jwtTokenProvider.getAuthentication(accessToken));
             } else {
-                System.out.println("inValid token");
                 SecurityContextHolder.clearContext();
                 jwtTokenProvider.clearCookie(httpServletRequest, httpServletResponse);
             }
         } else {
-            System.out.println("userName is null");
             SecurityContextHolder.clearContext();
             jwtTokenProvider.clearCookie(httpServletRequest, httpServletResponse);
         }

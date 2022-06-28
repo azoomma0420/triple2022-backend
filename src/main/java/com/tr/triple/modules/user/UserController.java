@@ -24,7 +24,7 @@ public class UserController {
     }
 
     @PostMapping(value = {"/login"})
-    public ResponseEntity<?> login(@RequestBody TripleUser login) {
+    public ResponseEntity<?> login(UserInfo login) {
 
         Object retObject = userService.login(login);
         if(retObject instanceof ErrorResponseDTO )
