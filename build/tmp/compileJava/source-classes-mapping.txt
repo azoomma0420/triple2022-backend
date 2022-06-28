@@ -4,8 +4,8 @@ com/tr/triple/config/misc/LoginUserArgumentResolver.java
  com.tr.triple.config.misc.LoginUserArgumentResolver
 com/tr/triple/modules/user/TripleUser.java
  com.tr.triple.modules.user.TripleUser
-com/tr/triple/modules/user/UserController.java
- com.tr.triple.modules.user.UserController
+com/tr/triple/config/WebConfiguration.java
+ com.tr.triple.config.WebConfiguration
 com/tr/triple/modules/user/UserInfo.java
  com.tr.triple.modules.user.UserInfo
  com.tr.triple.modules.user.UserInfo$UserInfoBuilder
@@ -18,8 +18,8 @@ com/tr/triple/config/Constants.java
 com/tr/triple/config/jwt/JwtToken.java
  com.tr.triple.config.jwt.JwtToken
  com.tr.triple.config.jwt.JwtToken$JwtTokenBuilder
-com/tr/triple/config/jwt/JwtTokenProvider.java
- com.tr.triple.config.jwt.JwtTokenProvider
+com/tr/triple/modules/user/UserError.java
+ com.tr.triple.modules.user.UserError
 com/tr/triple/config/misc/CustomUserDetailsService.java
  com.tr.triple.config.misc.CustomUserDetailsService
 com/tr/triple/modules/common/CommonError.java
@@ -31,13 +31,13 @@ com/tr/triple/modules/common/ErrorResponseDTO.java
  com.tr.triple.modules.common.ErrorResponseDTO$ErrorResponseDTOBuilder
 com/tr/triple/modules/common/Code.java
  com.tr.triple.modules.common.Code
-com/tr/triple/modules/user/UserError.java
- com.tr.triple.modules.user.UserError
-com/tr/triple/modules/user/UserService.java
- com.tr.triple.modules.user.UserService
+com/tr/triple/config/jwt/JwtTokenProvider.java
+ com.tr.triple.config.jwt.JwtTokenProvider
 com/tr/triple/config/SecurityConfig.java
  com.tr.triple.config.SecurityConfig
+com/tr/triple/modules/user/UserController.java
+ com.tr.triple.modules.user.UserController
 com/tr/triple/config/jwt/JwtTokenFilter.java
  com.tr.triple.config.jwt.JwtTokenFilter
-com/tr/triple/config/WebConfiguration.java
- com.tr.triple.config.WebConfiguration
+com/tr/triple/modules/user/UserService.java
+ com.tr.triple.modules.user.UserService

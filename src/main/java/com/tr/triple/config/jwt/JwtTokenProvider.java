@@ -62,7 +62,7 @@ public class JwtTokenProvider {
     public Boolean validateToken(String token) {
         final String username = extractUsername(token);
         TripleUser userDetails = (TripleUser) loginService.loadUserByUsername(username);
-        return (username.equals(userDetails.getUser().getUserId()) && !isTokenExpired(token));
+        return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
     public JwtToken createToken(String username) {

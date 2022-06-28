@@ -36,7 +36,6 @@ public class JwtTokenFilter extends OncePerRequestFilter {
                 jwtTokenProvider.clearCookie(httpServletRequest, httpServletResponse);
             }
         }
-
         if (userName != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             if (jwtTokenProvider.validateToken(accessToken)) {
                 SecurityContextHolder.getContext().setAuthentication(jwtTokenProvider.getAuthentication(accessToken));
