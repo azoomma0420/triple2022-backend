@@ -1,17 +1,55 @@
-plugins {
-    id 'java'
+buildscript {
+    ext{
+        springBootVersion = '2.5.2.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.codehaus.groovy:groovy-xml:3.0.8'
+        classpath 'mysql:mysql-connector-java:8.0.13'
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.7.RELEASE")
+        classpath 'gradle.plugin.com.gorylenko.gradle-git-properties:gradle-git-properties:1.5.2'
+    }
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+plugins {
+    id 'org.springframework.boot' version '2.5.2'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'groovy'
+}
+
+group = 'com.tr'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+compileJava.options.encoding = 'UTF-8'
+
+apply plugin: 'io.spring.dependency-management'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    runtimeOnly 'mysql:mysql-connector-java'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+bootRun {
+    if (project.hasProperty('args')) {
+        args project.args.split(',')
+    }
 }
 
 test {

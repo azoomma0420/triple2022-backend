@@ -1,0 +1,2 @@
+com/tr/triple/TripleApplication.java
+ com.tr.triple.TripleApplication
