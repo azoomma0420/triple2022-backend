@@ -26,14 +26,14 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
     private final AuthenticationManager authenticationManager;
-    public void addUser(UserInfo user) {
+    public void addUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
 
-    public Object login(UserInfo login) {
+    public Object login(User login) {
         String userName = login.getUserName();
-        UserInfo user = userRepository.findByUserName(userName);
+        User user = userRepository.findByUserName(userName);
         if (user == null) {
             return ErrorResponseDTO.builder()
                     .errorCode(UserError.INVALID_USERID.getCode())

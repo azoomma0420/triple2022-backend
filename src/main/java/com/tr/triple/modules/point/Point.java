@@ -1,22 +1,23 @@
-package com.tr.triple.modules.user;
+package com.tr.triple.modules.point;
 
 import lombok.*;
+import org.hibernate.envers.Audited;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Audited
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity(name="user")
-public class UserInfo {
+@Entity(name="point")
+public class Point {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId; //시스템상에서 자동으로 부여하는 ID
-
-    private String userName; //사용자가 직접 입력하는 ID
-    private String password;
+    private Long pointId;
+    private Long userId;
+    private Long point;
 }

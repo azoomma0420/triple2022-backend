@@ -13,18 +13,17 @@ import java.io.IOException;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/user")
 public class UserController {
     private final UserService userService;
 
     @PostMapping(value = {"/signup"})
-    public ResponseEntity<?> addUser(@RequestBody UserInfo addUser) {
+    public ResponseEntity<?> addUser(@RequestBody User addUser) {
         userService.addUser(addUser);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping(value = {"/login"})
-    public ResponseEntity<?> login(UserInfo login) {
+    public ResponseEntity<?> login(User login) {
 
         Object retObject = userService.login(login);
         if(retObject instanceof ErrorResponseDTO )
@@ -43,7 +42,7 @@ public class UserController {
         if(user == null)
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 
-        UserInfo responseUser = user.getUser();
+        User responseUser = user.getUser();
         responseUser.setPassword(null);
         return new ResponseEntity<>(responseUser, HttpStatus.OK);
     }

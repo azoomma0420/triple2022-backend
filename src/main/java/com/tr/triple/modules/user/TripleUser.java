@@ -9,9 +9,9 @@ import java.util.Collection;
 
 @Data
 public class TripleUser implements UserDetails {
-    private UserInfo user;
+    private User user;
 
-    public TripleUser(UserInfo user) {
+    public TripleUser(User user) {
         this.user = user;
     }
 

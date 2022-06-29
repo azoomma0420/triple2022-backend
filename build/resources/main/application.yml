@@ -6,12 +6,13 @@ spring:
     password: mysql
 
   jpa:
+    properties:
+      org.hibernate.envers.audit_table_suffix: _aud
+      hibernate:
+        format_sql: true
     show-sql: true
     hibernate:
       ddl-auto: update
-    properties:
-      hibernate:
-        format_sql: true
 
 jwt:
   secret: this_is_secret_key
