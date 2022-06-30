@@ -1,6 +1,5 @@
 package com.tr.triple.modules.review;
 
-import com.tr.triple.modules.user.UserReview;
 import lombok.*;
 
 
