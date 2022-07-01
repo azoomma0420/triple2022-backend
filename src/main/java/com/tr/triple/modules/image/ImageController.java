@@ -21,11 +21,8 @@ public class ImageController {
 
     @PostMapping(value = {"/saveImage"})
     public ResponseEntity<?> saveImage(@LoginUser TripleUser user, @RequestParam("type") String serviceType, @RequestParam("file") MultipartFile file) throws IOException {
-        System.out.println(serviceType);
+        imageService.saveImage(serviceType, file);
+        return new ResponseEntity<>("############",HttpStatus.OK);
 
-        if(user == null)
-            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-        else
-            return new ResponseEntity<>(imageService.saveImage(serviceType, file), HttpStatus.OK);
     }
 }

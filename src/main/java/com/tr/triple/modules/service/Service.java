@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.criteria.CriteriaBuilder;
 
-@Audited
 @Data
 @Builder
 @AllArgsConstructor

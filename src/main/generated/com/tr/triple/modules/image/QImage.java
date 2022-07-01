@@ -17,13 +17,13 @@ public class QImage extends EntityPathBase<Image> {
 
     private static final long serialVersionUID = 273839924L;
 
-    public static final QImage image1 = new QImage("image1");
-
-    public final SimplePath<java.sql.Blob> image = createSimple("image", java.sql.Blob.class);
+    public static final QImage image = new QImage("image");
 
     public final NumberPath<Long> imageId = createNumber("imageId", Long.class);
 
     public final StringPath imageName = createString("imageName");
+
+    public final StringPath imagePath = createString("imagePath");
 
     public final NumberPath<Long> serviceId = createNumber("serviceId", Long.class);
 
