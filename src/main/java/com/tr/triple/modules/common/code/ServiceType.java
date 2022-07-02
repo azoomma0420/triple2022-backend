@@ -1,4 +1,4 @@
-package com.tr.triple.modules.code;
+package com.tr.triple.modules.common.code;
 
 import com.tr.triple.modules.common.Code;
 import lombok.Getter;
@@ -6,11 +6,9 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public enum ActionType implements Code {
+public enum ServiceType implements Code {
 
-    ADD("ADD", "생성"),
-    MOD("MOD", "수정"),
-    DELETE("DELETE", "삭제");
+    REVIEW("1", "리뷰");
 
     private final String code;
     private final String description;

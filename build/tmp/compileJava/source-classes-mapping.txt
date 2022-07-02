@@ -1,7 +1,7 @@
-com/tr/triple/modules/review/QReview.java
- com.tr.triple.modules.review.QReview
-com/tr/triple/modules/user/QUserReview.java
- com.tr.triple.modules.user.QUserReview
+com/tr/triple/modules/place/PlaceRepository.java
+ com.tr.triple.modules.place.PlaceRepository
+com/tr/triple/modules/event/EventParameterValidationException.java
+ com.tr.triple.modules.event.EventParameterValidationException
 com/tr/triple/modules/service/Service.java
  com.tr.triple.modules.service.Service
  com.tr.triple.modules.service.Service$ServiceBuilder
@@ -9,8 +9,8 @@ com/tr/triple/modules/image/QImage.java
  com.tr.triple.modules.image.QImage
 com/tr/triple/config/QueryDslConfig.java
  com.tr.triple.config.QueryDslConfig
-com/tr/triple/modules/user/UserReviewRepository.java
- com.tr.triple.modules.user.UserReviewRepository
+com/tr/triple/modules/event/EventDTO.java
+ com.tr.triple.modules.event.EventDTO
 com/tr/triple/config/WebConfiguration.java
  com.tr.triple.config.WebConfiguration
 com/tr/triple/modules/image/Image.java
@@ -27,10 +27,11 @@ com/tr/triple/modules/user/UserError.java
  com.tr.triple.modules.user.UserError
 com/tr/triple/TripleApplication.java
  com.tr.triple.TripleApplication
-com/tr/triple/modules/code/ActionType.java
- com.tr.triple.modules.code.ActionType
-com/tr/triple/modules/common/CommonError.java
- com.tr.triple.modules.common.CommonError
+com/tr/triple/modules/user/QUser.java
+ com.tr.triple.modules.user.QUser
+com/tr/triple/modules/place/Place.java
+ com.tr.triple.modules.place.Place
+ com.tr.triple.modules.place.Place$PlaceBuilder
 com/tr/triple/config/Constants.java
  com.tr.triple.config.Constants
 com/tr/triple/modules/common/Code.java
@@ -44,25 +45,26 @@ com/tr/triple/config/jwt/JwtToken.java
  com.tr.triple.config.jwt.JwtToken$JwtTokenBuilder
 com/tr/triple/modules/service/QService.java
  com.tr.triple.modules.service.QService
-com/tr/triple/modules/review/ReviewRepository.java
- com.tr.triple.modules.review.ReviewRepository
+com/tr/triple/modules/place/QPlace.java
+ com.tr.triple.modules.place.QPlace
 com/tr/triple/config/AppConfig.java
  com.tr.triple.config.AppConfig
 com/tr/triple/modules/review/ReviewRepositoryCustom.java
  com.tr.triple.modules.review.ReviewRepositoryCustom
+com/tr/triple/modules/user/SessionDTO.java
+ com.tr.triple.modules.user.SessionDTO
+ com.tr.triple.modules.user.SessionDTO$SessionDTOBuilder
+com/tr/triple/modules/image/ImageRepository.java
+ com.tr.triple.modules.image.ImageRepository
+com/tr/triple/modules/user/UserReviewRepository.java
+ com.tr.triple.modules.user.UserReviewRepository
 com/tr/triple/modules/user/UserReview.java
  com.tr.triple.modules.user.UserReview
  com.tr.triple.modules.user.UserReview$UserReviewBuilder
-com/tr/triple/modules/code/EventType.java
- com.tr.triple.modules.code.EventType
-com/tr/triple/modules/code/ServiceType.java
- com.tr.triple.modules.code.ServiceType
-com/tr/triple/modules/review/ReviewRepositoryImpl.java
- com.tr.triple.modules.review.ReviewRepositoryImpl
 com/tr/triple/config/jwt/JwtTokenProvider.java
  com.tr.triple.config.jwt.JwtTokenProvider
-com/tr/triple/modules/user/UserController.java
- com.tr.triple.modules.user.UserController
+com/tr/triple/modules/user/UserRepository.java
+ com.tr.triple.modules.user.UserRepository
 com/tr/triple/config/misc/CustomUserDetailsService.java
  com.tr.triple.config.misc.CustomUserDetailsService
 com/tr/triple/modules/user/TripleUser.java
@@ -72,33 +74,42 @@ com/tr/triple/modules/user/User.java
  com.tr.triple.modules.user.User$UserBuilder
 com/tr/triple/config/jwt/JwtTokenFilter.java
  com.tr.triple.config.jwt.JwtTokenFilter
+com/tr/triple/modules/user/QUserReview.java
+ com.tr.triple.modules.user.QUserReview
+com/tr/triple/modules/image/ImageController.java
+ com.tr.triple.modules.image.ImageController
+com/tr/triple/modules/common/code/ActionType.java
+ com.tr.triple.modules.common.code.ActionType
+com/tr/triple/modules/image/ImageService.java
+ com.tr.triple.modules.image.ImageService
+com/tr/triple/modules/review/QReview.java
+ com.tr.triple.modules.review.QReview
 com/tr/triple/modules/user/UserService.java
  com.tr.triple.modules.user.UserService
-com/tr/triple/modules/user/QUser.java
- com.tr.triple.modules.user.QUser
-com/tr/triple/modules/user/UserRepository.java
- com.tr.triple.modules.user.UserRepository
-com/tr/triple/modules/user/SessionDTO.java
- com.tr.triple.modules.user.SessionDTO
- com.tr.triple.modules.user.SessionDTO$SessionDTOBuilder
-com/tr/triple/modules/image/ImageRepository.java
- com.tr.triple.modules.image.ImageRepository
-com/tr/triple/modules/event/EventDTO.java
- com.tr.triple.modules.event.EventDTO
+com/tr/triple/modules/user/UserController.java
+ com.tr.triple.modules.user.UserController
+com/tr/triple/modules/common/code/CommonError.java
+ com.tr.triple.modules.common.code.CommonError
+com/tr/triple/modules/place/PlaceController.java
+ com.tr.triple.modules.place.PlaceController
 com/tr/triple/modules/review/Review.java
  com.tr.triple.modules.review.Review
  com.tr.triple.modules.review.Review$ReviewBuilder
-com/tr/triple/modules/review/ReviewService.java
- com.tr.triple.modules.review.ReviewService
-com/tr/triple/modules/review/ReviewController.java
- com.tr.triple.modules.review.ReviewController
-com/tr/triple/modules/event/EventParameterValidationException.java
- com.tr.triple.modules.event.EventParameterValidationException
-com/tr/triple/modules/image/ImageController.java
- com.tr.triple.modules.image.ImageController
-com/tr/triple/modules/image/ImageService.java
- com.tr.triple.modules.image.ImageService
+com/tr/triple/modules/common/code/ServiceType.java
+ com.tr.triple.modules.common.code.ServiceType
+com/tr/triple/modules/review/ReviewRepositoryImpl.java
+ com.tr.triple.modules.review.ReviewRepositoryImpl
+com/tr/triple/modules/review/ReviewRepository.java
+ com.tr.triple.modules.review.ReviewRepository
+com/tr/triple/modules/place/PlaceService.java
+ com.tr.triple.modules.place.PlaceService
+com/tr/triple/modules/common/code/EventType.java
+ com.tr.triple.modules.common.code.EventType
 com/tr/triple/modules/event/EventController.java
  com.tr.triple.modules.event.EventController
+com/tr/triple/modules/review/ReviewController.java
+ com.tr.triple.modules.review.ReviewController
 com/tr/triple/modules/event/EventService.java
  com.tr.triple.modules.event.EventService
+com/tr/triple/modules/review/ReviewService.java
+ com.tr.triple.modules.review.ReviewService

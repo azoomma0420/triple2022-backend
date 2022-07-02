@@ -1,11 +1,8 @@
 package com.tr.triple.modules.user;
 
-import com.tr.triple.modules.review.Review;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 @Builder

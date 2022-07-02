@@ -1,6 +1,6 @@
 package com.tr.triple.modules.image;
 
-import com.tr.triple.modules.code.ServiceType;
+import com.tr.triple.modules.common.code.ServiceType;
 import com.tr.triple.modules.service.ServiceRepository;
 import com.tr.triple.modules.user.TripleUser;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional

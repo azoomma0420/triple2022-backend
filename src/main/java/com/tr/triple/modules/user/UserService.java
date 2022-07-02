@@ -2,7 +2,7 @@ package com.tr.triple.modules.user;
 
 import com.tr.triple.config.jwt.JwtToken;
 import com.tr.triple.config.jwt.JwtTokenProvider;
-import com.tr.triple.modules.common.CommonError;
+import com.tr.triple.modules.common.code.CommonError;
 import com.tr.triple.modules.common.ErrorResponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;

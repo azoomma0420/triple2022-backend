@@ -1,4 +1,4 @@
-package com.tr.triple.modules.code;
+package com.tr.triple.modules.common.code;
 
 import com.tr.triple.modules.common.Code;
 import lombok.Getter;
@@ -6,9 +6,11 @@ import lombok.RequiredArgsConstructor;
 
 @Getter
 @RequiredArgsConstructor
-public enum EventType implements Code {
+public enum ActionType implements Code {
 
-    REVIEW("REVIEW", "사용자가 사용자 경험을 남길때 발생하는 이벤트");
+    ADD("ADD", "생성"),
+    MOD("MOD", "수정"),
+    DELETE("DELETE", "삭제");
 
     private final String code;
     private final String description;

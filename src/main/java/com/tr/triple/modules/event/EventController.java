@@ -2,7 +2,7 @@ package com.tr.triple.modules.event;
 
 
 import com.tr.triple.config.annotation.LoginUser;
-import com.tr.triple.modules.common.CommonError;
+import com.tr.triple.modules.common.code.CommonError;
 import com.tr.triple.modules.common.ErrorResponseDTO;
 import com.tr.triple.modules.user.TripleUser;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +23,7 @@ public class EventController {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 
         try {
+            System.out.println(event.toString());
             eventService.handleEvent(user, event);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {

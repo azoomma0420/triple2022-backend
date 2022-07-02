@@ -1,9 +1,8 @@
 package com.tr.triple.modules.event;
 
-
-import com.tr.triple.modules.code.ActionType;
-import com.tr.triple.modules.code.EventType;
-import com.tr.triple.modules.code.ServiceType;
+import com.tr.triple.modules.common.code.ActionType;
+import com.tr.triple.modules.common.code.EventType;
+import com.tr.triple.modules.common.code.ServiceType;
 import com.tr.triple.modules.image.ImageService;
 import com.tr.triple.modules.review.ReviewService;
 import com.tr.triple.modules.user.TripleUser;
@@ -11,8 +10,6 @@ import com.tr.triple.modules.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import static org.apache.logging.log4j.util.Strings.isBlank;
 
 @Service
 @Transactional
@@ -53,7 +50,7 @@ public class EventService {
 
     private void handleReviewEventAddAction(TripleUser user, EventDTO event) throws Exception {
         Long estimatePoint = estimatePoint(event);
-        Long reviewId = reviewService.addReview(event.getUserId(), event.getContent(), estimatePoint);
+        Long reviewId = reviewService.addReview(event.getUserId(), event.getContent(), estimatePoint, event.getPlaceId());
         userService.addPoint(event.getUserId(), user.getUser().getPoint() + estimatePoint);
         handleImages(reviewId, event);
     }
@@ -79,13 +76,9 @@ public class EventService {
 
     private Long estimatePoint(EventDTO event) {
         Long point = 0L;
-        if(event.getContent() != null && event.getContent().length() >= 1) {
-            point++;
-        }
-        if(event.getAttachedPhotoIds() != null && event.getAttachedPhotoIds().size() >= 1) {
-            point++;
-        }
-        //TODO should check new place
+        if(event.getContent() != null && event.getContent().length() >= 1)                  point++;
+        if(event.getAttachedPhotoIds() != null && event.getAttachedPhotoIds().size() >= 1)  point++;
+        if(reviewService.isNewPlaceReview(event.getPlaceId()))                              point++;
         return point;
     }
 }

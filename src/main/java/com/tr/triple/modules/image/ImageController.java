@@ -2,7 +2,7 @@ package com.tr.triple.modules.image;
 
 
 import com.tr.triple.config.annotation.LoginUser;
-import com.tr.triple.modules.common.CommonError;
+import com.tr.triple.modules.common.code.CommonError;
 import com.tr.triple.modules.common.ErrorResponseDTO;
 import com.tr.triple.modules.user.TripleUser;
 import lombok.RequiredArgsConstructor;

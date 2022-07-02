@@ -1,5 +1,6 @@
-package com.tr.triple.modules.common;
+package com.tr.triple.modules.common.code;
 
+import com.tr.triple.modules.common.Code;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

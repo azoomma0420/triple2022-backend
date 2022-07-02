@@ -21,6 +21,8 @@ public class QReview extends EntityPathBase<Review> {
 
     public final StringPath content = createString("content");
 
+    public final NumberPath<Long> placeId = createNumber("placeId", Long.class);
+
     public final NumberPath<Long> reviewId = createNumber("reviewId", Long.class);
 
     public final NumberPath<Long> reviewPoint = createNumber("reviewPoint", Long.class);
