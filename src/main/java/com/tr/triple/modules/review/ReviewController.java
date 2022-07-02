@@ -21,4 +21,12 @@ public class ReviewController {
         else
             return new ResponseEntity<>(reviewService.getReviews(user.getUser().getUserId()), HttpStatus.OK);
     }
+
+    @GetMapping(value = {"/review"})
+    public ResponseEntity<?> getReview(@LoginUser TripleUser user, Long reviewId) {
+        if(user == null)
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        else
+            return new ResponseEntity<>(reviewService.getReview(reviewId), HttpStatus.OK);
+    }
 }

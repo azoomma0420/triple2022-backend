@@ -20,36 +20,47 @@ public class ReviewService {
         return reviewRepository.search(userId);
     }
 
-    public boolean addReview(Long userId, String content) {
-        Long reviewId = reviewRepository.save(Review.builder().content(content).build()).getReviewId();
+    public Review getReview(Long reviewId) {
+        return reviewRepository.getById(reviewId);
+    }
+
+    public Long addReview(Long userId, String content, Long estimatePoint) throws Exception {
+        Long reviewId = reviewRepository.save(Review.builder()
+                                                .content(content)
+                                                .reviewPoint(estimatePoint).build()).getReviewId();
         if(reviewId != null) {
             userReviewRepository.save(UserReview.builder()
                                         .reviewId(reviewId)
                                         .userId(userId).build());
+            return reviewId;
         }
-        return false;
+        throw new Exception("not found reviewId");
     }
 
-    public boolean modReview(Long reviewId, String content) {
+    public Long modReview(Long reviewId, String content, Long estimatePoint) throws Exception {
         Review review = reviewRepository.getById(reviewId);
         if(review != null) {
+            Long oldReviewPoint = review.getReviewPoint();
             review.setContent(content);
+            review.setReviewPoint(estimatePoint);
             reviewRepository.save(review);
-            return true;
+            return oldReviewPoint;
         }
-        return false;
+        throw new Exception("not found reviewId");
     }
 
-    public boolean deleteReview(Long userId, Long reviewId) {
+    public Long deleteReview(Long userId, Long reviewId) throws Exception {
         Review review = reviewRepository.getById(reviewId);
         if(review != null) {
+            Long oldReviewPoint = review.getReviewPoint();
             reviewRepository.delete(review);
-        }
 
-        UserReview userReview = userReviewRepository.findByUserIdAndReviewId(userId, reviewId);
-        if(userReview != null) {
-            userReviewRepository.delete(userReview);
+            UserReview userReview = userReviewRepository.findByUserIdAndReviewId(userId, reviewId);
+            if(userReview != null) {
+                userReviewRepository.delete(userReview);
+            }
+            return oldReviewPoint;
         }
-        return true;
+        throw new Exception("not found reviewId");
     }
 }

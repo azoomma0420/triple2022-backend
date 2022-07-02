@@ -22,11 +22,19 @@ public class EventController {
         if(user == null)
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 
-        if(eventService.handleEvent(event))
+        try {
+            eventService.handleEvent(user, event);
             return new ResponseEntity<>(HttpStatus.OK);
-        else
-            return new ResponseEntity<>(ErrorResponseDTO.builder()
-                    .errorCode(CommonError.SERVER_ERROR.getCode())
-                    .errorMessage(CommonError.SERVER_ERROR.getDescription()).build(), HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (Exception e) {
+            e.printStackTrace();
+            if(e instanceof EventParameterValidationException)
+                return new ResponseEntity<>(ErrorResponseDTO.builder()
+                        .errorCode(CommonError.CLIENT_ERROR.getCode())
+                        .errorMessage(CommonError.CLIENT_ERROR.getDescription()).build(), HttpStatus.BAD_REQUEST);
+            else
+                return new ResponseEntity<>(ErrorResponseDTO.builder()
+                        .errorCode(CommonError.SERVER_ERROR.getCode())
+                        .errorMessage(CommonError.SERVER_ERROR.getDescription()).build(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

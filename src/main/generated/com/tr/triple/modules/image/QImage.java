@@ -29,6 +29,8 @@ public class QImage extends EntityPathBase<Image> {
 
     public final NumberPath<Long> serviceTypeId = createNumber("serviceTypeId", Long.class);
 
+    public final NumberPath<Long> userId = createNumber("userId", Long.class);
+
     public QImage(String variable) {
         super(Image.class, forVariable(variable));
     }

@@ -17,6 +17,7 @@ public class Image {
     private Long imageId;
     private Long serviceId;
     private Long serviceTypeId;
+    private Long userId;
     private String imagePath;
     private String imageName;
 }

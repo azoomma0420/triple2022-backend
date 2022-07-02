@@ -63,4 +63,14 @@ public class UserService {
         jwtTokenProvider.clearCookie(request, response);
     }
 
+    public boolean addPoint(Long userId, Long point) {
+        User user = userRepository.getById(userId);
+        if(user != null) {
+            user.setPoint(point);
+            userRepository.save(user);
+            return true;
+        }
+        return false;
+    }
+
 }

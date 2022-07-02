@@ -1,9 +1,11 @@
 package com.tr.triple.modules.user;
 
 import lombok.*;
+import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 
+@Audited
 @Data
 @Builder
 @AllArgsConstructor

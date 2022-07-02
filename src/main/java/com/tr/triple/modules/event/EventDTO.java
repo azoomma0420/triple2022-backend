@@ -12,7 +12,6 @@ public class EventDTO {
     private Long reviewId;
     private Long userId;
     private Long placeId;
-    private int newPlace;
     private List<Long> attachedPhotoIds;
 
 }
