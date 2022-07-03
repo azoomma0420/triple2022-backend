@@ -1,8 +1,8 @@
 package com.tr.triple.modules.review;
 
 
-import com.tr.triple.modules.user.UserReview;
-import com.tr.triple.modules.user.UserReviewRepository;
+import com.tr.triple.modules.common.DuplicatedIdException;
+import com.tr.triple.modules.image.ImageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,36 +13,33 @@ import java.util.List;
 @Transactional
 @RequiredArgsConstructor
 public class ReviewService {
+    private final ImageService imageService;
     private final ReviewRepository reviewRepository;
-    private final UserReviewRepository userReviewRepository;
 
     public boolean isNewPlaceReview(Long placeId) {
-        if(reviewRepository.findByPlaceId(placeId) == null)
-            return true;
-        else
+        List<Review> reviews = reviewRepository.findByPlaceId(placeId);
+        if( reviews != null && reviews.size() > 0 )
             return false;
+        else
+            return true;
     }
 
     public List<Review> getReviews(Long userId) {
-        return reviewRepository.search(userId);
+        return reviewRepository.findByUserId(userId);
     }
 
     public Review getReview(Long reviewId) {
         return reviewRepository.getById(reviewId);
     }
 
-    public Long addReview(Long userId, String content, Long estimatePoint, Long placeId) throws Exception {
-        Long reviewId = reviewRepository.save(Review.builder()
+    public Long addReview(Long userId, String content, Long estimatePoint, Long placeId) throws DuplicatedIdException {
+         if(reviewRepository.findByUserIdAndPlaceId(userId, placeId) != null)
+             throw new DuplicatedIdException("");
+         return reviewRepository.save(Review.builder()
                                                 .content(content)
                                                 .placeId(placeId)
+                                                .userId(userId)
                                                 .reviewPoint(estimatePoint).build()).getReviewId();
-        if(reviewId != null) {
-            userReviewRepository.save(UserReview.builder()
-                                        .reviewId(reviewId)
-                                        .userId(userId).build());
-            return reviewId;
-        }
-        throw new Exception("not found reviewId");
     }
 
     public Long modReview(Long reviewId, String content, Long estimatePoint) throws Exception {
@@ -57,16 +54,15 @@ public class ReviewService {
         throw new Exception("not found reviewId");
     }
 
-    public Long deleteReview(Long userId, Long reviewId) throws Exception {
+    public Long deleteReview(Long reviewId) throws Exception {
         Review review = reviewRepository.getById(reviewId);
         if(review != null) {
             Long oldReviewPoint = review.getReviewPoint();
             reviewRepository.delete(review);
 
-            UserReview userReview = userReviewRepository.findByUserIdAndReviewId(userId, reviewId);
-            if(userReview != null) {
-                userReviewRepository.delete(userReview);
-            }
+            //delete review images
+            imageService.deleteImages(review.getReviewId());
+
             return oldReviewPoint;
         }
         throw new Exception("not found reviewId");

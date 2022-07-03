@@ -85,4 +85,12 @@ public class ImageService {
         return destination.getAbsolutePath();
     }
 
+    public void deleteImages(Long serviceTypeId) {
+        List<Image> images = imageRepository.findByServiceTypeId(serviceTypeId);
+        for(Image image : images) {
+            File imageFile = new File(image.getImagePath());
+            imageFile.delete();
+            imageRepository.delete(image);
+        }
+    }
 }

@@ -1,6 +1,7 @@
 package com.tr.triple.config.misc;
 
 import com.tr.triple.config.annotation.LoginUser;
+import com.tr.triple.modules.common.code.CommonError;
 import org.springframework.core.MethodParameter;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;

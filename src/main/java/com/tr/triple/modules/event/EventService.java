@@ -63,7 +63,7 @@ public class EventService {
     }
 
     private void handleReviewEventDeleteAction(TripleUser user, EventDTO event) throws Exception {
-        Long oldReviewPoint = reviewService.deleteReview(event.getUserId(), event.getReviewId());
+        Long oldReviewPoint = reviewService.deleteReview(event.getReviewId());
         userService.addPoint(event.getUserId(), user.getUser().getPoint() - oldReviewPoint);
     }
 

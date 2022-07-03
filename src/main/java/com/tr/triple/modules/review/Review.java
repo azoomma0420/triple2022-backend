@@ -18,4 +18,5 @@ public class Review {
     private String content;
     private Long reviewPoint;
     private Long placeId;
+    private Long userId;
 }

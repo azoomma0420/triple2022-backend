@@ -2,8 +2,10 @@ package com.tr.triple.modules.event;
 
 
 import com.tr.triple.config.annotation.LoginUser;
+import com.tr.triple.modules.common.DuplicatedIdException;
 import com.tr.triple.modules.common.code.CommonError;
 import com.tr.triple.modules.common.ErrorResponseDTO;
+import com.tr.triple.modules.review.ReviewError;
 import com.tr.triple.modules.user.TripleUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -32,6 +34,10 @@ public class EventController {
                 return new ResponseEntity<>(ErrorResponseDTO.builder()
                         .errorCode(CommonError.CLIENT_ERROR.getCode())
                         .errorMessage(CommonError.CLIENT_ERROR.getDescription()).build(), HttpStatus.BAD_REQUEST);
+            else if(e instanceof DuplicatedIdException)
+                return new ResponseEntity<>(ErrorResponseDTO.builder()
+                        .errorCode(ReviewError.DUPLICATED_PLACE_ID.getCode())
+                        .errorMessage(ReviewError.DUPLICATED_PLACE_ID.getDescription()).build(), HttpStatus.BAD_REQUEST);
             else
                 return new ResponseEntity<>(ErrorResponseDTO.builder()
                         .errorCode(CommonError.SERVER_ERROR.getCode())

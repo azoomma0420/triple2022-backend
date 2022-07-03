@@ -10,4 +10,6 @@ import java.util.List;
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, Long>, ReviewRepositoryCustom {
     List<Review> findByPlaceId(Long placeId);
+    List<Review> findByUserId(Long userId);
+    Review findByUserIdAndPlaceId(Long userId, Long placeId);
 }
